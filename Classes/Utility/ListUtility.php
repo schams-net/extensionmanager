@@ -111,7 +111,7 @@ class ListUtility implements \TYPO3\CMS\Core\SingletonInterface
      * @param null|string
      * @return array[] All extensions with info
      */
-    public function getAvailableExtensions($filter)
+    public function getAvailableExtensions($filter = null)
     {
         if ($this->availableExtensions === null) {
             $this->availableExtensions = [];
@@ -295,10 +295,10 @@ class ListUtility implements \TYPO3\CMS\Core\SingletonInterface
      * Gets all available and installed extension with additional information
      * from em_conf and TER (if available)
      *
-     * @param string
+     * @param null|string
      * @return array
      */
-    public function getAvailableAndInstalledExtensionsWithAdditionalInformation($filter = '')
+    public function getAvailableAndInstalledExtensionsWithAdditionalInformation($filter = null)
     {
         $availableExtensions = $this->getAvailableExtensions($filter);
         $availableAndInstalledExtensions = $this->getAvailableAndInstalledExtensions($availableExtensions);
