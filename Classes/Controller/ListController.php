@@ -142,8 +142,13 @@ class ListController extends AbstractModuleController
      */
     public function indexAction()
     {
+        $filter = null;
+        if ($this->request->hasArgument('filter')) {
+            $filter = $this->request->getArgument('filter');
+        }
+
         $this->addComposerModeNotification();
-        $availableAndInstalledExtensions = $this->listUtility->getAvailableAndInstalledExtensionsWithAdditionalInformation();
+        $availableAndInstalledExtensions = $this->listUtility->getAvailableAndInstalledExtensionsWithAdditionalInformation($filter);
         ksort($availableAndInstalledExtensions);
         $this->view->assignMultiple(
             [
